@@ -13,13 +13,9 @@ public class CreateUserConsumer {
     UserService userService;
 
     @JmsListener(destination = "standalone.queue")
-    public void consume(String name) {
-        try {
-            User user = userService.createAndUpdateUser(name);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    public void consume(String message) {
 
+        System.out.println(message);
         System.out.println(userService.getAllUsers());
     }
 }
